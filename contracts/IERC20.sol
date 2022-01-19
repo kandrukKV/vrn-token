@@ -6,7 +6,7 @@ interface IERC20 {
 
   function symbol() external view returns (string memory);
 
-  function decimals() external view returns (uint8);
+  function decimals() external view returns (uint256);
 
   function balanceOf(address who) external view returns (uint256);
 
@@ -34,8 +34,4 @@ interface IERC20 {
   function decreaseAllowance(address spender, uint256 subtractedValue)
     external
     returns (bool);
-
-  event Transfer(address indexed from, address indexed to, uint256 value);
-
-  event Approval(address indexed owner, address indexed spender, uint256 value);
 }
