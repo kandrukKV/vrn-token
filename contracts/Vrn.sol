@@ -23,7 +23,7 @@ contract VRN is IERC20 {
     _owner = msg.sender;
   }
 
-  modifier requireOwner() {
+  modifier onlyOwner() {
     require(_owner == msg.sender, "You aren't owner");
     _;
   }
@@ -59,15 +59,15 @@ contract VRN is IERC20 {
     return _allowances[owner][spender];
   }
 
-  function mint(address to, uint256 amount) external requireOwner {
+  function mint(address to, uint256 amount) external onlyOwner {
     require(to != address(0), "Transfer to the zero address");
     _balances[to] = amount;
     _totalSupply += amount;
 
-    emit Transfer(_owner, to, amount);
+    emit Transfer(address(0), to, amount);
   }
 
-  function burn(address from, uint256 amount) external requireOwner {
+  function burn(address from, uint256 amount) external onlyOwner {
     require(from != address(0), "Transfer to the zero address");
     require(_balances[from] >= amount, "Burn amount exceeds balance");
     _balances[from] -= amount;
