@@ -61,7 +61,7 @@ contract VRN is IERC20 {
 
   function mint(address to, uint256 amount) external onlyOwner {
     require(to != address(0), "Transfer to the zero address");
-    _balances[to] = amount;
+    _balances[to] += amount;
     _totalSupply += amount;
 
     emit Transfer(address(0), to, amount);
