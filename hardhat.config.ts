@@ -19,8 +19,14 @@ const config: HardhatUserConfig = {
     rinkeby: {
       url: process.env.ALCHEMY_URL || "",
       accounts:
-        process.env.PRIVATE_ACC_KEY !== undefined
-          ? [process.env.PRIVATE_ACC_KEY]
+        process.env.PRIVATE_ACC_KEY !== undefined &&
+        process.env.PRIVATE_ACC_KEY1 !== undefined &&
+        process.env.PRIVATE_ACC_KEY2 !== undefined
+          ? [
+              process.env.PRIVATE_ACC_KEY,
+              process.env.PRIVATE_ACC_KEY1,
+              process.env.PRIVATE_ACC_KEY2,
+            ]
           : [],
     },
     hardhat: {
